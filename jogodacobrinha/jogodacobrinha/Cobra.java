@@ -12,8 +12,8 @@ public class Cobra {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.body = new LinkedList<>();
-        this.body.add(new Ponto(10, 10)); // Posição inicial da cobra
-        this.direction = Direcao.RIGHT; // Direção inicial da cobra
+        this.body.add(new Ponto(10, 10)); 
+        this.direction = Direcao.RIGHT; 
     }
 
     public LinkedList<Ponto> getBody() {
@@ -42,7 +42,7 @@ public class Cobra {
         body.addFirst(newHead);
 
         if (!hasCollided()) {
-            body.removeLast(); // Remove a cauda da cobra para mantê-la do mesmo tamanho
+            body.removeLast(); 
         } else {
             System.out.println("Game Over - Colisão!");
             System.exit(0);
@@ -64,7 +64,7 @@ public class Cobra {
             return true;
         }
 
-        // Verifica colisão com o próprio corpo
+        
         for (int i = 1; i < body.size(); i++) {
             Ponto part = body.get(i);
             if (head.equals(part)) {
