@@ -11,9 +11,9 @@ public class SnakeGame {
 
     public SnakeGame() {
         this.gameOver = false;
-        this.cobra = new Cobra(20, 20); // Ajusta o tamanho do tabuleiro aqui
+        this.cobra = new Cobra(20, 20); 
         this.tabuleiro = new Tabuleiro();
-        this.fruta = gerarPosicaoAleatoria(); // Gera uma posição inicial aleatória para a fruta
+        this.fruta = gerarPosicaoAleatoria(); 
     }
 
     public void comecarJogo() {
@@ -23,19 +23,19 @@ public class SnakeGame {
             processarEntrada(scanner);
             cobra.move();
 
-            // Obter a posição da cabeça da cobra
+            
             Ponto head = cobra.getBody().getFirst();
             int headX = head.getX();
             int headY = head.getY();
 
-            // Obter a posição da fruta
+            
             int fruitX = fruta.getX();
             int fruitY = fruta.getY();
 
-            // Verificar se a cabeça da cobra alcançou a fruta
+            
             if (headX == fruitX && headY == fruitY) {
                 cobra.grow();
-                fruta = gerarPosicaoAleatoria(); // Gera uma nova posição para a fruta
+                fruta = gerarPosicaoAleatoria(); 
             }
         }
     }
@@ -72,8 +72,8 @@ public class SnakeGame {
 
     private Ponto gerarPosicaoAleatoria() {
         Random random = new Random();
-        int x = random.nextInt(Tabuleiro.getWidth() - 2) + 1; // Evita as bordas do tabuleiro
-        int y = random.nextInt(Tabuleiro.HEIGHT - 2) + 1; // Evita as bordas do tabuleiro
+        int x = random.nextInt(Tabuleiro.getWidth() - 2) + 1; 
+        int y = random.nextInt(Tabuleiro.HEIGHT - 2) + 1; 
         return new Ponto(x, y);
     }
 }
