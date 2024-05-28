@@ -25,11 +25,11 @@ public class Tabuleiro {
             for (int x = 0; x < tabuleiroComprimento; x++) {
                 Posicao posAtual = new Posicao(x, y);
                 if (posicaoNaCobra(posAtual, cobra)) {
-                    System.out.print("O"); // Representa a cobra
+                    System.out.print("O"); // cobra
                 } else if (posAtual.ehIgual(fruta)) {
-                    System.out.print("F"); // Representa a fruta
+                    System.out.print("F"); // fruta
                 } else {
-                    System.out.print("."); // Espaço vazio
+                    System.out.print("."); // resto
                 }
             }
             System.out.println();
