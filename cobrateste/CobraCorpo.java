@@ -11,11 +11,11 @@ public class CobraCorpo {
 
     public CobraCorpo(Jogo jogo) {
         this.jogo = jogo;
-        this.gameOver = false; // Inicializa a variável de game over como false
+        this.gameOver = false;
     }
 
     public void setDirecao(String novaDirecao) {
-    // Verifica se a nova direção é oposta à direção atual
+    //direção é oposta
     if (("wasd".contains(novaDirecao) && novaDirecao.length() == 1) &&
         !(novaDirecao.equals("w") && direcao.equals("s")) &&
         !(novaDirecao.equals("s") && direcao.equals("w")) &&
@@ -46,12 +46,12 @@ public class CobraCorpo {
     public void carregarCorpo(int xInicial, int yInicial) {
         corpo = new ArrayList<>();
         corpo.add(new Posicao(xInicial, yInicial));
-        direcao = "d"; // Inicializa a direção para "d" (direita)
+        direcao = "d";
     }
 
     public void andar(Posicao fruta, int largura, int altura) {
         if (gameOver) {
-            return; // Se o jogo já acabou, não podemos mover a cobra
+            return;
         }
 
         Posicao cabecaAtual = corpo.get(0);
@@ -71,11 +71,11 @@ public class CobraCorpo {
                 novaCabeca = new Posicao(cabecaAtual.x + 1, cabecaAtual.y);
                 break;
             default:
-                novaCabeca = new Posicao(cabecaAtual.x, cabecaAtual.y); // Caso a direção seja inválida, mantemos a cabeça no lugar
+                novaCabeca = new Posicao(cabecaAtual.x, cabecaAtual.y);
                 break;
         }
 
-        // Verifica se a nova posição da cabeça colide com o corpo da cobra ou as bordas do tabuleiro
+        // verifica colisão
         if (verificaColisao(novaCabeca, largura, altura)) {
             gameOver = true;
             return;
@@ -90,12 +90,12 @@ public class CobraCorpo {
     }
 
     private boolean verificaColisao(Posicao posicao, int largura, int altura) {
-        // Verifica se a nova posição da cabeça colide com as bordas do tabuleiro
+        // colisão com as bordas
         if (posicao.x < 0 || posicao.x >= largura || posicao.y < 0 || posicao.y >= altura) {
             return true;
         }
 
-        // Verifica se a nova posição da cabeça colide com o corpo da cobra
+        // colisão com o corpo
         for (int i = 1; i < corpo.size(); i++) {
             if (posicao.ehIgual(corpo.get(i))) {
                 return true;
