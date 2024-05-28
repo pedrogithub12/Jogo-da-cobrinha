@@ -26,7 +26,7 @@ public class Fruta {
             x = random.nextInt(largura);
             y = random.nextInt(altura);
             fruta = new Posicao(x, y);
-        } while (posicaoNaCobra(fruta, cobra)); // Garante que a fruta não apareça no corpo da cobra
+        } while (posicaoNaCobra(fruta, cobra)); // fruta não spawna dentro da cobra
     }
 
     private boolean posicaoNaCobra(Posicao pos, ArrayList<Posicao> cobra) {
