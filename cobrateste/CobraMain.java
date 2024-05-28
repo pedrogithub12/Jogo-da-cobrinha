@@ -6,18 +6,17 @@ public class CobraMain {
 
     public static void main(String[] args) throws InterruptedException {
         boolean gameOver = false;
-        Jogo jogo = new Jogo(20, 20); // Passa as dimensões do tabuleiro
+        Jogo jogo = new Jogo(20, 20);
         CobraCorpo cc = new CobraCorpo(jogo);
-        cc.carregarCorpo(10, 10); // Inicializa o corpo da cobra no centro do tabuleiro
-        jogo.inicializarFruta(cc.getCorpo()); // Inicializa a fruta
+        cc.carregarCorpo(10, 10); // centro do tabuleiro
+        jogo.inicializarFruta(cc.getCorpo());
 
         Scanner scanner = new Scanner(System.in);
 
-        // Imprime o tabuleiro inicialmente
+        
         jogo.jogar(cc.getCorpo());
 
         while (!gameOver) {
-            // Atualiza a direção da cobra com a entrada do usuário, se disponível
             if (scanner.hasNextLine()) {
                 String novaDirecao = scanner.nextLine().trim();
                 if ("wasd".contains(novaDirecao) && novaDirecao.length() == 1) {
@@ -27,12 +26,12 @@ public class CobraMain {
 
             cc.andar(jogo.getFruta(), 20, 20);
 
-            if (cc.isGameOver()) { // Verifica se o jogo acabou usando o método isGameOver
+            if (cc.isGameOver()) {
                 gameOver = true;
                 System.out.println("Game Over!");
             } else {
                 jogo.jogar(cc.getCorpo());
-                // Simula o tempo de jogo
+                //deixa o terminal mais fluído para jogar
                 Thread.sleep(500);
             }
         }
